@@ -95,7 +95,7 @@ Here we added two dependencies for the project: hibernate-core and MySQL-connect
 ```
 
 ## Create the Persistence Class (Model Class or Pojo).
-- Create a package “com.test.hib.model” under the main->src->Java
+- Create a package model 
 - Create an entity class named “User.java” under the above package.
 - Then we will use annotations to map this table to the corresponding table in the database.
 This is a POJO (Plain Old Java Object) class with some class variables, its getter, setter methods, and constructors.\
@@ -218,35 +218,9 @@ hibernate.cfg.xml
 ```
 
 
-## Create the Configuration File
-
-Add the following code to the “CreateUserTable” class.
-
-```bash
-  package org.demo.hibernate.controller;
-  import org.demo.hibernate.model.User;
-  import org.hibernate.Session;
-  import org.hibernate.SessionFactory;
-  import org.hibernate.Transaction;
-  import org.hibernate.cfg.Configuration;
-  public class CreateUserTable {
-    public static void main(String[] args) {
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
-        Transaction t = session.beginTransaction();
-        User user = new User();
-        t.commit();
-        System.out.println("successfully created user table");
-        factory.close();
-        session.close();
-    }
-  }
-```
-Hibernate has many configuration properties. Apart from the standard connection properties, it is worth mentioning the dialect property, which allows us to specify the name of the SQL dialect for the database.
-
 ## Develop CRUD Operations
 
-Create a package called com.test.hib.controller. Then create the below classes in that package:
+Create a package called controller. Then create the below classes in that package:
 - CreateUserTable.java
 - CreatingUser.java
 - FindingUser.java
